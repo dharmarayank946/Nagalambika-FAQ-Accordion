@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VEDA Technology Web Development Internship Task 10 - Interactive FAQ Accordion built with HTML5, CSS3, and Vanilla JavaScript.">
+  <title>FAQ Accordion | VEDA Technology Task 10</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="brand-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">VEDA Technology Internship • Task 10</span>
+      </div>
+      <h1 class="header-title">Web Development &amp; Programming FAQ</h1>
+      <p class="header-subtitle">
+        Find answers to frequently asked questions about web development, programming fundamentals, and modern web standards.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- CONTROL BAR & INFO -->
+      <div class="faq-summary-bar">
+        <div class="summary-info">
+          <span class="count-badge" id="faq-count">10 Questions</span>
+          <span class="behavior-badge">Single-Open Accordion</span>
+        </div>
+        <button id="expand-collapse-btn" class="btn-text-action" type="button" aria-label="Collapse all FAQ answers">
+          <span class="btn-text-icon" aria-hidden="true">&#8645;</span>
+          <span id="toggle-all-label">Collapse All</span>
+        </button>
+      </div>
+
+      <!-- FAQ ACCORDION CONTAINER -->
+      <section class="faq-accordion-section" aria-label="Frequently Asked Questions">
+        <div class="accordion-list" id="accordion-list">
+
+          <!-- FAQ Item 1 -->
+          <article class="faq-item" id="faq-item-1">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-1" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-1">
+                <span class="faq-question-text">1. What is Web Development and how do I get started as a beginner?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-1" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-1" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Web development involves building, creating, and maintaining websites and web applications that run online. As a beginner, the recommended learning roadmap starts with mastering the three core web standards:
+                </p>
+                <ul>
+                  <li><strong>HTML5:</strong> Defines the structure and content of web pages.</li>
+                  <li><strong>CSS3:</strong> Controls the visual styling, layout, typography, and mobile responsiveness.</li>
+                  <li><strong>JavaScript (ES6+):</strong> Adds interactive behavior, dynamic logic, and user engagement.</li>
+                </ul>
+                <p>
+                  Starting with vanilla HTML, CSS, and JS builds a strong foundational understanding before moving to frameworks.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 2 -->
+          <article class="faq-item" id="faq-item-2">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-2" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-2">
+                <span class="faq-question-text">2. What is the difference between HTML, CSS, and JavaScript?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-2" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-2" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Think of a web page like a building:
+                </p>
+                <ul>
+                  <li><strong>HTML (Structure):</strong> Acts like the concrete foundation, pillars, walls, and rooms of the building. It structures headings, paragraphs, buttons, forms, and images.</li>
+                  <li><strong>CSS (Styling):</strong> Acts like the interior design, paint, wall colors, lighting, and decorative layout. It defines colors, fonts, margins, flexbox/grid alignments, and visual themes.</li>
+                  <li><strong>JavaScript (Functionality):</strong> Acts like the electrical wiring, smart automated doors, and light switches. It handles user clicks, form validation, animations, API requests, and data updates.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 3 -->
+          <article class="faq-item" id="faq-item-3">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-3" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-3">
+                <span class="faq-question-text">3. What is the difference between Frontend and Backend development?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-3" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-3" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Web development is broadly divided into two main domains:
+                </p>
+                <ul>
+                  <li><strong>Frontend (Client-Side):</strong> Refers to everything users directly view and interact with inside their web browser. Technologies include HTML, CSS, JavaScript, React, and Vue.</li>
+                  <li><strong>Backend (Server-Side):</strong> Refers to the server, database, and background processing that powers the application logic. Technologies include Node.js, Python, Java, PHP, Express, SQL, and MongoDB.</li>
+                </ul>
+                <p>
+                  Developers who master both frontend and backend development are called <strong>Full-Stack Developers</strong>.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 4 -->
+          <article class="faq-item" id="faq-item-4">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-4" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-4">
+                <span class="faq-question-text">4. Why is Responsive Web Design important?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-4" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-4" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Responsive Web Design (RWD) ensures that web pages render smoothly across various screen sizes, viewports, and orientation modes—from small smartphones and mobile devices to tablets, laptops, and large desktop monitors.
+                </p>
+                <p>
+                  Key benefits include improved user retention, seamless mobile accessibility, consistent user experience, and higher search engine ranking penalties avoided under mobile-first Google indexing.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 5 -->
+          <article class="faq-item" id="faq-item-5">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-5" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-5">
+                <span class="faq-question-text">5. What does Single-Open Accordion behavior mean?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-5" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-5" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Single-open accordion behavior is a user experience design pattern where expanding one collapsible panel automatically closes whichever accordion item was previously open.
+                </p>
+                <p>
+                  This behavior keeps the screen organized, prevents visual clutter on small mobile devices, minimizes excessive vertical scrolling, and allows users to focus on one question at a time.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 6 -->
+          <article class="faq-item" id="faq-item-6">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-6" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-6">
+                <span class="faq-question-text">6. What are Semantic HTML tags and why should I use them?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-6" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-6" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Semantic HTML tags (such as <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;button&gt;</code>, and <code>&lt;footer&gt;</code>) convey clear semantic meaning to both browsers and human developers.
+                </p>
+                <p>
+                  Using semantic elements improves web accessibility (a11y) for screen reader users, boosts search engine optimization (SEO), and provides clear document structure without relying on generic <code>&lt;div&gt;</code> elements.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 7 -->
+          <article class="faq-item" id="faq-item-7">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-7" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-7">
+                <span class="faq-question-text">7. How does keyboard accessibility work for interactive web components?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-7" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-7" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Keyboard accessibility allows individuals who rely on keyboards or assistive technologies to navigate and operate interactive controls easily.
+                </p>
+                <ul>
+                  <li><strong>Focus Navigation:</strong> Users can press <code>Tab</code> and <code>Shift + Tab</code> to move between buttons.</li>
+                  <li><strong>Activation:</strong> Native <code>&lt;button&gt;</code> elements automatically respond to <code>Enter</code> and <code>Space</code> key triggers.</li>
+                  <li><strong>WAI-ARIA Attributes:</strong> <code>aria-expanded</code> informs assistive screen readers whether a panel is currently expanded or collapsed.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 8 -->
+          <article class="faq-item" id="faq-item-8">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-8" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-8">
+                <span class="faq-question-text">8. What is the best way to practice and improve programming skills?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-8" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-8" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  The most effective strategy to level up programming skills is consistent, project-based learning:
+                </p>
+                <ol>
+                  <li>Build real-world projects starting from small tasks to complete applications.</li>
+                  <li>Break down complex problem statements into simple, step-by-step logic.</li>
+                  <li>Practice debugging using browser Developer Tools and reading error logs.</li>
+                  <li>Refactor existing code to make it cleaner, more modular, and accessible.</li>
+                </ol>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 9 -->
+          <article class="faq-item" id="faq-item-9">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-9" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-9">
+                <span class="faq-question-text">9. What are web standards and cross-browser compatibility?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-9" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-9" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Web standards are set of formal technical specifications established by governing bodies like the World Wide Web Consortium (W3C) and WHATWG.
+                </p>
+                <p>
+                  Adhering to standard HTML, CSS, and JS guarantees cross-browser compatibility, ensuring that your website operates seamlessly across Chrome, Firefox, Edge, Safari, and mobile browsers without requiring special plugins or proprietary hacks.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 10 -->
+          <article class="faq-item" id="faq-item-10">
+            <h2 class="faq-header">
+              <button 
+                type="button" 
+                class="faq-trigger" 
+                id="faq-btn-10" 
+                aria-expanded="false" 
+                aria-controls="faq-answer-10">
+                <span class="faq-question-text">10. How do I host a static website for free using GitHub Pages?</span>
+                <span class="faq-icon-wrapper" aria-hidden="true">
+                  <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" class="icon-line-v"></line>
+                    <line x1="5" y1="12" x2="19" y2="12" class="icon-line-h"></line>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              id="faq-answer-10" 
+              class="faq-panel" 
+              role="region" 
+              aria-labelledby="faq-btn-10" 
+              hidden>
+              <div class="faq-panel-content">
+                <p>
+                  Deploying a static website to GitHub Pages is quick and free:
+                </p>
+                <ol>
+                  <li>Push your static files (<code>index.html</code>, <code>style.css</code>, <code>script.js</code>) to your GitHub repository.</li>
+                  <li>In your repository, click on <strong>Settings</strong> &gt; <strong>Pages</strong>.</li>
+                  <li>Under <em>Build and deployment</em>, select <strong>Deploy from a branch</strong>.</li>
+                  <li>Choose the <strong>main</strong> branch and root <code>/</code> folder, then click <strong>Save</strong>.</li>
+                  <li>After a couple of minutes, your project will be live at <code>https://&lt;username&gt;.github.io/&lt;repo-name&gt;/</code>.</li>
+                </ol>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p class="footer-credit">
+        Designed &amp; Developed by <strong>Nagalambika D Koralli</strong> for <strong>VEDA Technology Internship</strong>
+      </p>
+      <p class="footer-subtext">
+        Task 10 — FAQ Accordion Component • Built with standard HTML5, CSS3 &amp; Vanilla JavaScript
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
