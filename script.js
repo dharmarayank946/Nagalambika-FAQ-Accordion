@@ -1,6 +1,5 @@
 /**
- * SYNTECXHUB Front-End Development Internship - Project 2
- * FAQ Accordion Widget
+ * Interactive FAQ Accordion Widget
  * 
  * Features:
  * - Expandable / collapsible answers with silky smooth CSS grid transitions
@@ -32,7 +31,7 @@ function initAccordion() {
   /* --------------------------------------------------------------------------
      1. Theme Management (Light / Dark)
      -------------------------------------------------------------------------- */
-  const savedTheme = localStorage.getItem('syntecxhub_faq_theme');
+  const savedTheme = localStorage.getItem('faq_accordion_theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
   htmlRoot.setAttribute('data-theme', initialTheme);
@@ -41,7 +40,7 @@ function initAccordion() {
     const currentTheme = htmlRoot.getAttribute('data-theme');
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
     htmlRoot.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('syntecxhub_faq_theme', nextTheme);
+    localStorage.setItem('faq_accordion_theme', nextTheme);
   });
 
   /* --------------------------------------------------------------------------

@@ -1,58 +1,53 @@
-# SYNTECXHUB Front-End Development Internship
-## Project 2 — FAQ Accordion Widget
+# Modern Interactive FAQ Accordion Widget
 
-An interactive, responsive, and accessible **FAQ Accordion Widget** built from scratch for the **SYNTECXHUB Front-End Development Internship**.
+A clean, modern, accessible, and fully responsive **FAQ Accordion Widget** built from scratch with pure **HTML5**, **CSS3**, and **Vanilla JavaScript**.
 
 ---
 
 ## 📌 Project Overview
 
-This project satisfies all official requirements for SYNTECXHUB Project 2:
-- **Collapsible Answers:** Interactive accordion items that expand and collapse cleanly upon interaction.
-- **JavaScript Open/Close Functionality:** Robust state management with `aria-expanded` and active CSS classes.
-- **Smooth Animations:** Butter-smooth height and opacity transitions using modern CSS Grid (`grid-template-rows: 0fr` to `1fr`) and rotating chevron icons.
-- **Professional, Polished Design:** Clean typography (Google Font *Plus Jakarta Sans*), ambient glowing backdrops, card elevation, and intuitive visual hierarchy.
-- **100% Mobile Responsiveness:** Flawlessly adapts from small mobile screens (320px) to ultra-wide displays.
-- **Bonus Enhancements:**
+This component delivers a sleek, user-friendly help center and FAQ experience for modern web applications:
+- **Collapsible Answers:** Smoothly expands and collapses questions upon interaction.
+- **JavaScript State Management:** Robust open/close mechanics with synchronized `aria-expanded` attributes.
+- **Fluid CSS Grid Animations:** Butter-smooth height transitions (`grid-template-rows: 0fr` to `1fr`) without jerky layout shifts or fixed-height constraints.
+- **Clean, Modern Aesthetics:** Styled with Google Font *Plus Jakarta Sans*, subtle ambient glow backdrops, elevated cards, and rotating chevron indicators.
+- **100% Mobile Responsive:** Optimized across mobile smartphones (320px+), tablets, and desktop displays with touch-friendly targets (>= 48px).
+- **Interactive Features:**
   - 🔍 **Live Search Bar:** Instant keyword search across questions and answers.
-  - 🏷️ **Category Filter Pills:** Filter FAQs by topic (General, Front-End, Accessibility, Internship).
-  - 🔄 **Multi-Open Toggle Mode:** Switch between classic accordion (one open item at a time) and multi-expand mode.
-  - 🌓 **Dark / Light Theme Switcher:** Smooth theme switching with user preference saved in `localStorage`.
-  - ♿ **W3C WAI-ARIA Accessibility:** Native `<button>` triggers, ARIA labels, focus-visible indicators, and full keyboard navigation (Arrows, Home, End, Enter, Space).
+  - 🏷️ **Category Filter Pills:** Quickly filter FAQs by category (General, Account, Billing, Features & Tech, Security).
+  - 🔄 **Multi-Open Toggle Mode:** Switch between classic accordion (one item open at a time) and multi-expand mode.
+  - 🌓 **Dark / Light Theme Switcher:** Smooth theme transition with user preference stored in `localStorage`.
+  - ♿ **W3C WAI-ARIA Accessibility:** Semantic `<button>` triggers, clear focus-visible indicators, and full keyboard navigation (Arrows, Home, End, Enter, Space).
 
 ---
 
 ## 🗂️ Project Structure
 
 ```text
-syntecxhub-faq-accordion/
-├── index.html        # Semantic HTML5 markup, ARIA roles, and structured FAQ items
-├── style.css         # Modern CSS variables, grid transitions, dark/light themes & responsiveness
+faq-accordion-widget/
+├── index.html        # Semantic HTML5 markup, ARIA roles, and FAQ structure
+├── style.css         # Modern CSS variables, CSS grid animations, dark/light themes & responsive layout
 ├── script.js         # Vanilla JavaScript for toggle mechanics, search, filtering & keyboard controls
-└── README.md         # Comprehensive project documentation and setup instructions
+└── README.md         # Project documentation, keyboard guide, and local setup
 ```
 
 ---
 
 ## 🚀 How to Run and Test Locally
 
-### Option 1: Direct Browser Launch
-1. Navigate to the project folder:
-   ```text
-   D:\Projects\FAQ Accordion Widget\
-   ```
-2. Double-click **`index.html`** to open it directly in your default browser (Chrome, Edge, Firefox, Brave).
+### Option 1: Direct File Launch
+Double-click **`index.html`** in your file manager to open it immediately in any web browser.
 
-### Option 2: Using Local HTTP Server (Recommended)
-You can start a lightweight local web server using Python or Node:
+### Option 2: Using a Lightweight HTTP Server
+You can serve the directory locally using Python or Node.js:
 
 **Using Python:**
 ```bash
 python -m http.server 3000
 ```
-Then visit: `http://localhost:3000`
+Then open: `http://localhost:3000`
 
-**Using Node `npx serve`:**
+**Using Node:**
 ```bash
 npx serve -l 3000 .
 ```
@@ -63,63 +58,27 @@ npx serve -l 3000 .
 
 | Key | Action |
 | :--- | :--- |
-| **Tab** / **Shift + Tab** | Move focus into or out of accordion triggers and interactive elements |
+| **Tab** / **Shift + Tab** | Move focus to the next or previous interactive element |
 | **Enter** / **Space** | Expand or collapse the currently focused FAQ item |
-| **Arrow Down** | Move focus to the next visible FAQ question (loops to top) |
-| **Arrow Up** | Move focus to the previous visible FAQ question (loops to bottom) |
-| **Home** | Jump focus directly to the first FAQ question |
-| **End** | Jump focus directly to the last FAQ question |
+| **Arrow Down** | Move focus to the next visible question (loops around to top) |
+| **Arrow Up** | Move focus to the previous visible question (loops around to bottom) |
+| **Home** | Jump focus directly to the first visible question |
+| **End** | Jump focus directly to the last visible question |
 
 ---
 
-## 🧪 Verification & Testing Checklist
+## 🧪 Verified Features
 
-- [x] **Collapsible answers:** Clicking any question toggles open/close state.
-- [x] **Single-open behavior:** Opening another item closes previous item (when Multi-open is OFF).
-- [x] **Multi-open behavior:** Multiple items can expand simultaneously (when Multi-open is ON).
-- [x] **Smooth CSS animations:** Grid height transitions fluidly without clipping or jumpy layouts.
-- [x] **Live keyword search:** Filters matching questions instantly; displays clean empty state if no matches exist.
-- [x] **Category filtering:** Smoothly shows only items belonging to the selected category.
-- [x] **Dark / Light theme:** Toggles theme dynamically and persists selection via `localStorage`.
-- [x] **Keyboard accessibility:** Full navigation via arrows, enter, space, home, and end keys with visible focus rings.
-- [x] **Mobile responsiveness:** Tested across mobile, tablet, and desktop viewports.
-
----
-
-## 📤 Publishing to a Brand-New GitHub Repository
-
-To push this project to its own independent GitHub repository:
-
-1. **Initialize Git in this folder**:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial commit for SYNTECXHUB Project 2 FAQ Accordion Widget"
-   ```
-
-2. **Create a new repository on GitHub**:
-   - Go to [github.com/new](https://github.com/new)
-   - Repository name: `syntecxhub-faq-accordion` (or `SYNTECXHUB-FAQ-Accordion-Widget`)
-   - Description: *SYNTECXHUB Front-End Development Internship Project 2 — FAQ Accordion Widget*
-   - Make it **Public**
-   - Do NOT check "Initialize with README" (we already have one)
-   - Click **Create repository**
-
-3. **Link and Push**:
-   ```bash
-   git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/syntecxhub-faq-accordion.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-4. **Deploy Free Live Demo (GitHub Pages)**:
-   - In your new repository on GitHub, go to **Settings** > **Pages**.
-   - Under **Build and deployment** > **Branch**, select `main` / `root` and click **Save**.
-   - Your live website will be published at `https://<YOUR_GITHUB_USERNAME>.github.io/syntecxhub-faq-accordion/`.
+- [x] **Collapsible answers:** Questions expand and collapse with fluid animations.
+- [x] **Single-open accordion:** Opening another question automatically closes the previously opened one.
+- [x] **Multi-open toggle:** Allows multiple questions to remain open simultaneously.
+- [x] **Live keyword search:** Filters matching questions instantly with an empty-state reset.
+- [x] **Category filtering:** Smoothly isolates questions by topic.
+- [x] **Dark / Light mode:** Instant theme toggle with local storage persistence.
+- [x] **Keyboard navigation:** Complete keyboard support following W3C WAI-ARIA standards.
+- [x] **Mobile responsive:** Fluid layout with zero horizontal overflow on small devices.
 
 ---
 
 ## 👤 Author
-- **Intern:** Nagalambika Koralli
-- **Internship:** SYNTECXHUB Front-End Web Development Internship
-- **Deliverable:** Project 2 — FAQ Accordion Widget
+- **Developer:** Nagalambika Koralli

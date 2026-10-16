@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SYNTECXHUB Project 2 - Modern, accessible, and responsive FAQ Accordion Widget with smooth animations and keyboard navigation.">
-  <title>SYNTECXHUB • FAQ Accordion Widget</title>
+  <meta name="description" content="Modern, accessible, and responsive FAQ Accordion Widget with instant search, category filtering, smooth CSS transitions, and keyboard navigation.">
+  <title>Frequently Asked Questions • Help & Support Center</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,15 +16,15 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- Background Glow Elements -->
+    <!-- Ambient Glow Elements -->
     <div class="ambient-glow glow-1" aria-hidden="true"></div>
     <div class="ambient-glow glow-2" aria-hidden="true"></div>
 
     <!-- Navigation / Top Utility Bar -->
     <header class="top-nav">
       <div class="brand">
-        <span class="brand-badge">SYNTECXHUB</span>
-        <span class="project-tag">Project 2 • Front-End Internship</span>
+        <span class="brand-badge">HELP CENTER</span>
+        <span class="project-tag">Frequently Asked Questions</span>
       </div>
       <div class="controls-group">
         <!-- Multi-open toggle switch -->
@@ -58,10 +58,10 @@
     <main class="faq-container">
       <!-- Hero Section -->
       <section class="faq-hero">
-        <span class="hero-chip">Help & Documentation</span>
+        <span class="hero-chip">Support & Documentation</span>
         <h1 class="hero-title">Frequently Asked Questions</h1>
         <p class="hero-subtitle">
-          Find instant answers to common questions about our platform, services, accessibility standards, and internship deliverables.
+          Find instant answers to common questions about our platform, features, billing, security, and accessibility standards.
         </p>
 
         <!-- Search Bar -->
@@ -74,7 +74,7 @@
             type="search" 
             id="faq-search-input" 
             class="faq-search-input" 
-            placeholder="Search questions or keywords (e.g. responsiveness, animations, accessibility)..." 
+            placeholder="Search questions or keywords (e.g. billing, responsiveness, security)..." 
             aria-label="Search frequently asked questions"
           >
           <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display: none;">
@@ -86,9 +86,10 @@
         <div class="category-filters" role="tablist" aria-label="FAQ Categories">
           <button class="filter-chip active" data-category="all" role="tab" aria-selected="true" id="cat-all">All Questions</button>
           <button class="filter-chip" data-category="general" role="tab" aria-selected="false" id="cat-general">General</button>
-          <button class="filter-chip" data-category="frontend" role="tab" aria-selected="false" id="cat-frontend">Front-End</button>
-          <button class="filter-chip" data-category="accessibility" role="tab" aria-selected="false" id="cat-accessibility">Accessibility</button>
-          <button class="filter-chip" data-category="internship" role="tab" aria-selected="false" id="cat-internship">Internship</button>
+          <button class="filter-chip" data-category="account" role="tab" aria-selected="false" id="cat-account">Account</button>
+          <button class="filter-chip" data-category="billing" role="tab" aria-selected="false" id="cat-billing">Billing</button>
+          <button class="filter-chip" data-category="technical" role="tab" aria-selected="false" id="cat-technical">Features & Tech</button>
+          <button class="filter-chip" data-category="security" role="tab" aria-selected="false" id="cat-security">Security</button>
         </div>
       </section>
 
@@ -96,8 +97,8 @@
       <section class="accordion-wrapper" aria-label="Frequently Asked Questions List">
         <div class="accordion" id="faq-accordion">
 
-          <!-- FAQ Item 1 -->
-          <article class="accordion-item" data-category="internship" id="faq-item-1">
+          <!-- FAQ Item 1: General -->
+          <article class="accordion-item" data-category="general" id="faq-item-1">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -108,7 +109,7 @@
                 <span class="trigger-icon-wrap" aria-hidden="true">
                   <span class="category-icon-tag">🚀</span>
                 </span>
-                <span class="trigger-text">What is the goal of Project 2 in the SYNTECXHUB Internship?</span>
+                <span class="trigger-text">How do I get started with using this platform?</span>
                 <span class="chevron-indicator" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -124,17 +125,17 @@
             >
               <div class="panel-content">
                 <p>
-                  Project 2 requires building an interactive <strong>FAQ Accordion Widget</strong> from scratch using clean HTML, modern CSS, and vanilla JavaScript.
+                  Getting started is fast and straightforward. You can create an account in seconds, explore our interactive dashboard, and access all core tools directly from your browser without downloading extra software.
                 </p>
                 <p>
-                  The core objectives are to create an intuitive collapsible interface, deliver silky smooth CSS transitions, ensure 100% mobile responsiveness, and follow professional front-end engineering best practices.
+                  Our built-in onboarding guides walk you through every feature step by step, allowing you to customize your preferences immediately.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- FAQ Item 2 -->
-          <article class="accordion-item" data-category="frontend" id="faq-item-2">
+          <!-- FAQ Item 2: Technical -->
+          <article class="accordion-item" data-category="technical" id="faq-item-2">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -145,7 +146,7 @@
                 <span class="trigger-icon-wrap" aria-hidden="true">
                   <span class="category-icon-tag">✨</span>
                 </span>
-                <span class="trigger-text">How are the smooth expand and collapse animations implemented?</span>
+                <span class="trigger-text">How do the collapsible answers and smooth animations work?</span>
                 <span class="chevron-indicator" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -161,17 +162,17 @@
             >
               <div class="panel-content">
                 <p>
-                  The animations leverage modern CSS Grid height transitions (<code>grid-template-rows: 0fr</code> to <code>1fr</code>) combined with opacity and transform animations.
+                  The expand and collapse animations utilize modern CSS Grid transitions (<code>grid-template-rows: 0fr</code> to <code>1fr</code>) combined with opacity and transform transitions.
                 </p>
                 <p>
-                  This guarantees a completely fluid animation without jerky layout jumps, fixed height limits, or JavaScript calculation lags. The chevron icons also rotate smoothly with cubic-bezier timing.
+                  This provides buttery smooth height changes without fixed pixel limits, layout jumps, or performance lags, while the chevron icons rotate fluidly with cubic-bezier easing.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- FAQ Item 3 -->
-          <article class="accordion-item" data-category="accessibility" id="faq-item-3">
+          <!-- FAQ Item 3: Technical / Accessibility -->
+          <article class="accordion-item" data-category="technical" id="faq-item-3">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -198,7 +199,7 @@
             >
               <div class="panel-content">
                 <p>
-                  Yes, fully compliant with W3C WAI-ARIA Accordion Design Patterns:
+                  Yes, this widget strictly adheres to the W3C WAI-ARIA Accordion Design Patterns:
                 </p>
                 <ul>
                   <li><strong>Semantic Triggers:</strong> Built with native <code>&lt;button&gt;</code> elements inside proper heading levels (<code>&lt;h2&gt;</code>).</li>
@@ -210,8 +211,8 @@
             </div>
           </article>
 
-          <!-- FAQ Item 4 -->
-          <article class="accordion-item" data-category="general" id="faq-item-4">
+          <!-- FAQ Item 4: Account -->
+          <article class="accordion-item" data-category="account" id="faq-item-4">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -220,9 +221,9 @@
                 aria-controls="accordion-panel-4"
               >
                 <span class="trigger-icon-wrap" aria-hidden="true">
-                  <span class="category-icon-tag">📱</span>
+                  <span class="category-icon-tag">👤</span>
                 </span>
-                <span class="trigger-text">How does the widget ensure mobile responsiveness across devices?</span>
+                <span class="trigger-text">Can I manage multiple user profiles or team members on one account?</span>
                 <span class="chevron-indicator" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -238,17 +239,17 @@
             >
               <div class="panel-content">
                 <p>
-                  The widget uses fluid typography (<code>clamp()</code> functions), flexible CSS box sizing, and responsive media queries.
+                  Yes. Account owners can invite collaborators, assign custom permission levels (Admin, Editor, or Viewer), and manage centralized workspace access from the settings panel.
                 </p>
                 <p>
-                  On smaller smartphones, touch targets remain generous (minimum 48px height), font sizing scales comfortably, and horizontal scrolling is strictly avoided.
+                  Profile details, notification preferences, and team permissions can be updated at any time with instant sync across sessions.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- FAQ Item 5 -->
-          <article class="accordion-item" data-category="frontend" id="faq-item-5">
+          <!-- FAQ Item 5: Billing -->
+          <article class="accordion-item" data-category="billing" id="faq-item-5">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -257,9 +258,9 @@
                 aria-controls="accordion-panel-5"
               >
                 <span class="trigger-icon-wrap" aria-hidden="true">
-                  <span class="category-icon-tag">⚡</span>
+                  <span class="category-icon-tag">💳</span>
                 </span>
-                <span class="trigger-text">Can I open multiple questions at the same time?</span>
+                <span class="trigger-text">What payment methods do you accept, and can I cancel anytime?</span>
                 <span class="chevron-indicator" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -275,17 +276,17 @@
             >
               <div class="panel-content">
                 <p>
-                  Yes! By default, the widget operates in standard single-open mode (opening one question gently collapses any previously open question).
+                  We accept major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual enterprise plans.
                 </p>
                 <p>
-                  If you flip the <strong>"Multi-open"</strong> toggle in the top-right header, you can expand as many questions simultaneously as you want.
+                  There are no long-term contracts or lock-in periods. You can upgrade, downgrade, or cancel your subscription at any time with a single click from your billing page.
                 </p>
               </div>
             </div>
           </article>
 
-          <!-- FAQ Item 6 -->
-          <article class="accordion-item" data-category="general" id="faq-item-6">
+          <!-- FAQ Item 6: Security -->
+          <article class="accordion-item" data-category="security" id="faq-item-6">
             <h2 class="accordion-header">
               <button 
                 class="accordion-trigger" 
@@ -294,9 +295,9 @@
                 aria-controls="accordion-panel-6"
               >
                 <span class="trigger-icon-wrap" aria-hidden="true">
-                  <span class="category-icon-tag">🎨</span>
+                  <span class="category-icon-tag">🔒</span>
                 </span>
-                <span class="trigger-text">How do I customize the colors, questions, and styling?</span>
+                <span class="trigger-text">How is my personal data and account security protected?</span>
                 <span class="chevron-indicator" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -312,10 +313,84 @@
             >
               <div class="panel-content">
                 <p>
-                  All styling tokens are organized at the top of <code>style.css</code> inside <code>:root</code> variables (e.g. <code>--primary-color</code>, <code>--bg-page</code>, <code>--radius-card</code>).
+                  We prioritize security by employing industry-standard 256-bit SSL/TLS encryption for all data in transit and AES-256 encryption at rest.
                 </p>
                 <p>
-                  To add new questions, simply copy an <code>&lt;article class="accordion-item"&gt;</code> block in <code>index.html</code>, update the IDs and labels, and it will automatically inherit full animation, search, and keyboard support!
+                  Two-factor authentication (2FA) is available for all accounts, and we adhere to strict global privacy standards with automated security monitoring.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 7: Technical -->
+          <article class="accordion-item" data-category="technical" id="faq-item-7">
+            <h2 class="accordion-header">
+              <button 
+                class="accordion-trigger" 
+                id="accordion-trigger-7" 
+                aria-expanded="false" 
+                aria-controls="accordion-panel-7"
+              >
+                <span class="trigger-icon-wrap" aria-hidden="true">
+                  <span class="category-icon-tag">📱</span>
+                </span>
+                <span class="trigger-text">How does the widget ensure mobile responsiveness across devices?</span>
+                <span class="chevron-indicator" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              class="accordion-panel" 
+              id="accordion-panel-7" 
+              role="region" 
+              aria-labelledby="accordion-trigger-7"
+            >
+              <div class="panel-content">
+                <p>
+                  The widget uses fluid typography (<code>clamp()</code> functions), flexible CSS box sizing, and responsive media queries.
+                </p>
+                <p>
+                  On smaller smartphones, touch targets remain generous (minimum 48px height), font sizing scales comfortably, and horizontal scrolling is strictly avoided.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- FAQ Item 8: General -->
+          <article class="accordion-item" data-category="general" id="faq-item-8">
+            <h2 class="accordion-header">
+              <button 
+                class="accordion-trigger" 
+                id="accordion-trigger-8" 
+                aria-expanded="false" 
+                aria-controls="accordion-panel-8"
+              >
+                <span class="trigger-icon-wrap" aria-hidden="true">
+                  <span class="category-icon-tag">⚡</span>
+                </span>
+                <span class="trigger-text">Can I open multiple questions at the same time?</span>
+                <span class="chevron-indicator" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div 
+              class="accordion-panel" 
+              id="accordion-panel-8" 
+              role="region" 
+              aria-labelledby="accordion-trigger-8"
+            >
+              <div class="panel-content">
+                <p>
+                  Yes! By default, the widget operates in standard single-open mode (opening one question gently collapses any previously open question).
+                </p>
+                <p>
+                  If you flip the <strong>"Multi-open"</strong> toggle in the top-right header, you can expand as many questions simultaneously as you want.
                 </p>
               </div>
             </div>
@@ -336,16 +411,16 @@
       <aside class="support-card">
         <div class="support-text">
           <h3>Still have questions?</h3>
-          <p>Can’t find the answer you’re looking for? Reach out to the SYNTECXHUB team for assistance.</p>
+          <p>Can’t find the answer you’re looking for? Reach out to our customer support team for prompt assistance.</p>
         </div>
-        <a href="mailto:support@syntecxhub.com" class="support-action-btn">Get In Touch</a>
+        <a href="mailto:support@example.com" class="support-action-btn">Contact Support</a>
       </aside>
     </main>
 
     <!-- Footer -->
     <footer class="app-footer">
       <p>
-        Built with ❤️ for <strong>SYNTECXHUB Front-End Internship</strong> • Project 2 FAQ Accordion
+        <strong>Help Center & Support</strong> • Built with modern accessible web standards
       </p>
     </footer>
   </div>
