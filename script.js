@@ -1,159 +1,267 @@
-/* ==========================================================================
-   VEDA Technology Web Development Internship — Task 10 FAQ Accordion
-   JavaScript Logic: Single-Open Accordion, Accessibility & Transitions
-   ========================================================================== */
+/**
+ * SYNTECXHUB Front-End Development Internship - Project 2
+ * FAQ Accordion Widget
+ * 
+ * Features:
+ * - Expandable / collapsible answers with silky smooth CSS grid transitions
+ * - Single-open and Multi-open toggle mode
+ * - Full W3C WAI-ARIA compliance & keyboard navigation (Arrows, Home, End, Enter, Space)
+ * - Real-time keyword search & filtering
+ * - Category pill filtering with active states
+ * - Light / Dark theme toggler with localStorage memory
+ */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Query accordion trigger buttons and controls
-  const faqTriggers = document.querySelectorAll('.faq-trigger');
-  const toggleAllBtn = document.getElementById('expand-collapse-btn');
-  const toggleAllLabel = document.getElementById('toggle-all-label');
+function initAccordion() {
+  // DOM Elements
+  const accordion = document.getElementById('faq-accordion');
+  const items = Array.from(accordion.querySelectorAll('.accordion-item'));
+  const triggers = Array.from(accordion.querySelectorAll('.accordion-trigger'));
+  const multiExpandToggle = document.getElementById('multi-expand-toggle');
+  const searchInput = document.getElementById('faq-search-input');
+  const searchClearBtn = document.getElementById('search-clear-btn');
+  const categoryChips = Array.from(document.querySelectorAll('.filter-chip'));
+  const noResultsCard = document.getElementById('no-results');
+  const resetSearchBtn = document.getElementById('reset-search-btn');
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const htmlRoot = document.documentElement;
 
-  /**
-   * Helper function to open an accordion item
-   * @param {HTMLButtonElement} trigger 
-   */
-  function openAccordion(trigger) {
-    const faqItem = trigger.closest('.faq-item');
-    const panelId = trigger.getAttribute('aria-controls');
-    const panel = document.getElementById(panelId);
+  // Active state variables
+  let currentCategory = 'all';
+  let searchQuery = '';
 
-    if (!faqItem || !panel) return;
+  /* --------------------------------------------------------------------------
+     1. Theme Management (Light / Dark)
+     -------------------------------------------------------------------------- */
+  const savedTheme = localStorage.getItem('syntecxhub_faq_theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  htmlRoot.setAttribute('data-theme', initialTheme);
 
-    // 1. Update Accessibility state
-    trigger.setAttribute('aria-expanded', 'true');
-    
-    // 2. Add Active styling classes
-    faqItem.classList.add('active');
-    trigger.classList.add('active');
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = htmlRoot.getAttribute('data-theme');
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    htmlRoot.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('syntecxhub_faq_theme', nextTheme);
+  });
 
-    // 3. Reveal content panel
-    panel.removeAttribute('hidden');
-    
-    // 4. Calculate dynamic height for smooth CSS transition
-    panel.style.maxHeight = panel.scrollHeight + 'px';
-    panel.style.opacity = '1';
-  }
+  /* --------------------------------------------------------------------------
+     2. Accordion Expand / Collapse Mechanics
+     -------------------------------------------------------------------------- */
+  function toggleItem(item) {
+    const trigger = item.querySelector('.accordion-trigger');
+    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+    const isMultiMode = multiExpandToggle.checked;
 
-  /**
-   * Helper function to close an accordion item
-   * @param {HTMLButtonElement} trigger 
-   */
-  function closeAccordion(trigger) {
-    const faqItem = trigger.closest('.faq-item');
-    const panelId = trigger.getAttribute('aria-controls');
-    const panel = document.getElementById(panelId);
-
-    if (!faqItem || !panel) return;
-
-    // 1. Update Accessibility state
-    trigger.setAttribute('aria-expanded', 'false');
-
-    // 2. Remove Active styling classes
-    faqItem.classList.remove('active');
-    trigger.classList.remove('active');
-
-    // 3. Smooth transition to height 0 and opacity 0
-    panel.style.maxHeight = '0';
-    panel.style.opacity = '0';
-
-    // 4. Apply hidden attribute after transition completes
-    setTimeout(() => {
-      if (trigger.getAttribute('aria-expanded') === 'false') {
-        panel.setAttribute('hidden', '');
+    if (isExpanded) {
+      // Collapse clicked item
+      collapseItem(item, trigger);
+    } else {
+      // In single-expand mode, close all other open items first
+      if (!isMultiMode) {
+        items.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            const otherTrigger = otherItem.querySelector('.accordion-trigger');
+            collapseItem(otherItem, otherTrigger);
+          }
+        });
       }
-    }, 350);
+      // Expand clicked item
+      expandItem(item, trigger);
+    }
   }
 
-  /**
-   * Attach Click and Keyboard Event Listeners to each FAQ Trigger
-   */
-  faqTriggers.forEach((trigger) => {
-    // CLICK EVENT: Single-Open Accordion Behavior
-    trigger.addEventListener('click', () => {
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+  function expandItem(item, trigger) {
+    item.classList.add('active');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
 
-      // SINGLE-OPEN BEHAVIOR: Close all other open accordion items
-      faqTriggers.forEach((otherTrigger) => {
-        if (otherTrigger !== trigger) {
-          closeAccordion(otherTrigger);
-        }
+  function collapseItem(item, trigger) {
+    item.classList.remove('active');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  // Bind click event to accordion triggers
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const parentItem = trigger.closest('.accordion-item');
+      if (parentItem) {
+        toggleItem(parentItem);
+      }
+    });
+  });
+
+  /* --------------------------------------------------------------------------
+     3. Accessible Keyboard Navigation (WAI-ARIA Pattern)
+     -------------------------------------------------------------------------- */
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener('keydown', (e) => {
+      // Find currently visible triggers (not hidden by search or category filter)
+      const visibleTriggers = triggers.filter(btn => {
+        const item = btn.closest('.accordion-item');
+        return item && !item.classList.contains('hidden');
       });
 
-      // Toggle clicked item (if open, close it; if closed, open it)
-      if (isExpanded) {
-        closeAccordion(trigger);
-      } else {
-        openAccordion(trigger);
-      }
+      const currentIndex = visibleTriggers.indexOf(trigger);
 
-      updateToggleAllLabel();
-    });
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          if (currentIndex < visibleTriggers.length - 1) {
+            visibleTriggers[currentIndex + 1].focus();
+          } else {
+            visibleTriggers[0].focus(); // Loop to first
+          }
+          break;
 
-    // KEYBOARD ACCESSIBILITY: Arrow Key Navigation
-    trigger.addEventListener('keydown', (e) => {
-      const triggersArray = Array.from(faqTriggers);
-      const currentIndex = triggersArray.indexOf(trigger);
+        case 'ArrowUp':
+          e.preventDefault();
+          if (currentIndex > 0) {
+            visibleTriggers[currentIndex - 1].focus();
+          } else {
+            visibleTriggers[visibleTriggers.length - 1].focus(); // Loop to last
+          }
+          break;
 
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const nextIndex = (currentIndex + 1) % triggersArray.length;
-        triggersArray[nextIndex].focus();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prevIndex = (currentIndex - 1 + triggersArray.length) % triggersArray.length;
-        triggersArray[prevIndex].focus();
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        triggersArray[0].focus();
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        triggersArray[triggersArray.length - 1].focus();
+        case 'Home':
+          e.preventDefault();
+          if (visibleTriggers.length > 0) {
+            visibleTriggers[0].focus();
+          }
+          break;
+
+        case 'End':
+          e.preventDefault();
+          if (visibleTriggers.length > 0) {
+            visibleTriggers[visibleTriggers.length - 1].focus();
+          }
+          break;
+
+        default:
+          break;
       }
     });
   });
 
-  /**
-   * Control Bar Toggle (Collapse All / Expand First) Action
-   */
-  if (toggleAllBtn) {
-    toggleAllBtn.addEventListener('click', () => {
-      const anyOpen = Array.from(faqTriggers).some(
-        (t) => t.getAttribute('aria-expanded') === 'true'
-      );
+  /* --------------------------------------------------------------------------
+     4. Filtering & Search Logic
+     -------------------------------------------------------------------------- */
+  function filterFAQs() {
+    let visibleCount = 0;
+    const cleanQuery = searchQuery.trim().toLowerCase();
 
-      if (anyOpen) {
-        faqTriggers.forEach((trigger) => closeAccordion(trigger));
+    items.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      const matchesCategory = currentCategory === 'all' || itemCategory === currentCategory;
+
+      const triggerText = item.querySelector('.trigger-text')?.textContent.toLowerCase() || '';
+      const panelText = item.querySelector('.panel-content')?.textContent.toLowerCase() || '';
+      const matchesSearch = cleanQuery === '' || triggerText.includes(cleanQuery) || panelText.includes(cleanQuery);
+
+      if (matchesCategory && matchesSearch) {
+        item.classList.remove('hidden');
+        visibleCount++;
       } else {
-        openAccordion(faqTriggers[0]);
+        item.classList.add('hidden');
+        // Collapse hidden items to avoid invisible open state
+        const trigger = item.querySelector('.accordion-trigger');
+        if (trigger) collapseItem(item, trigger);
       }
-      updateToggleAllLabel();
     });
+
+    // Handle Empty State
+    if (visibleCount === 0) {
+      noResultsCard.style.display = 'block';
+    } else {
+      noResultsCard.style.display = 'none';
+    }
   }
 
-  /**
-   * Update action button text based on current accordion state
-   */
-  function updateToggleAllLabel() {
-    if (!toggleAllLabel) return;
-    const anyOpen = Array.from(faqTriggers).some(
-      (t) => t.getAttribute('aria-expanded') === 'true'
-    );
-    toggleAllLabel.textContent = anyOpen ? 'Collapse All' : 'Expand First';
-  }
+  // Category Filter Pills Click
+  categoryChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      categoryChips.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-selected', 'false');
+      });
+      chip.classList.add('active');
+      chip.setAttribute('aria-selected', 'true');
+      currentCategory = chip.getAttribute('data-category') || 'all';
+      filterFAQs();
+    });
+  });
 
-  /**
-   * Recalculate open panel heights on window resize for responsive layout changes
-   */
-  window.addEventListener('resize', () => {
-    faqTriggers.forEach((trigger) => {
-      if (trigger.getAttribute('aria-expanded') === 'true') {
-        const panelId = trigger.getAttribute('aria-controls');
-        const panel = document.getElementById(panelId);
-        if (panel) {
-          panel.style.maxHeight = panel.scrollHeight + 'px';
+  // Search Input Handler
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    if (searchQuery.trim().length > 0) {
+      searchClearBtn.style.display = 'block';
+    } else {
+      searchClearBtn.style.display = 'none';
+    }
+    filterFAQs();
+  });
+
+  // Clear Search Button
+  searchClearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClearBtn.style.display = 'none';
+    searchInput.focus();
+    filterFAQs();
+  });
+
+  // Reset Filters Button inside No-Results State
+  resetSearchBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClearBtn.style.display = 'none';
+    
+    // Reset to "All Questions" category
+    categoryChips.forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-selected', 'false');
+    });
+    const allChip = document.getElementById('cat-all');
+    if (allChip) {
+      allChip.classList.add('active');
+      allChip.setAttribute('aria-selected', 'true');
+    }
+    currentCategory = 'all';
+
+    filterFAQs();
+  });
+
+  /* --------------------------------------------------------------------------
+     5. Multi-expand Mode Toggle
+     -------------------------------------------------------------------------- */
+  multiExpandToggle.addEventListener('change', () => {
+    if (!multiExpandToggle.checked) {
+      // When switching back to single-expand, leave only the first active item open
+      let keptFirst = false;
+      items.forEach(item => {
+        if (item.classList.contains('active')) {
+          if (!keptFirst) {
+            keptFirst = true;
+          } else {
+            const trigger = item.querySelector('.accordion-trigger');
+            collapseItem(item, trigger);
+          }
         }
-      }
-    });
+      });
+    }
   });
-});
+
+  // Initial setup: Open the first item by default for a warm greeting preview
+  const firstItem = items[0];
+  if (firstItem) {
+    const firstTrigger = firstItem.querySelector('.accordion-trigger');
+    expandItem(firstItem, firstTrigger);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAccordion);
+} else {
+  initAccordion();
+}
+
